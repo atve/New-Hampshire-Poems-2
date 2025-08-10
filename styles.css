@@ -1,0 +1,12 @@
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:24px;line-height:1.5}
+h1{margin:0 0 8px 0}
+header p{margin:0 0 16px 0;color:#555}
+audio{display:block;margin:16px 0;width:100%;max-width:720px}
+.list{display:grid;gap:10px;margin-top:8px}
+button.track{padding:10px 14px;border:1px solid #ccc;border-radius:8px;background:#fff;cursor:pointer;text-align:left}
+button.track:hover{border-color:#888}
+.now{margin:8px 0 0 0;color:#444}
+.empty{color:#666}
+footer{margin-top:24px;color:#777;font-size:.95rem}
+code{background:#f6f6f6;padding:.1em .3em;border-radius:4px}
