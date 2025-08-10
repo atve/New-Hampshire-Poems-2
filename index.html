@@ -1,46 +1,84 @@
 ---
-layout: null
+
+layout: none
+
 ---
+
+
+
 <!doctype html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="utf-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Poem Recordings</title>
+
   <link rel="stylesheet" href="{{ 'styles.css' | relative_url }}">
+
 </head>
+
 <body>
-  <header>
-    <h1>Poem Recordings</h1>
-    <p>Drop audio files into the <code>poems/</code> folder. This page will list them automatically.</p>
-  </header>
 
-  <main>
-    <audio id="player" controls preload="none"></audio>
-    <div id="nowPlaying" class="now"></div>
+  <h1>Poem Recordings</h1>
 
-    <div class="list">
-      {%- assign poems = site.static_files | where_exp: "f", "f.path contains '/poems/'" -%}
-      {%- assign poems = poems | where_exp: "f", "f.extname == '.mp3' or f.extname == '.m4a' or f.extname == '.ogg' or f.extname == '.wav'" -%}
-      {%- assign poems = poems | sort: "name" -%}
 
-      {%- if poems.size == 0 -%}
-        <p class="empty">No audio files found yet. Upload to <code>poems/</code> and refresh.</p>
-      {%- else -%}
-        {%- for f in poems -%}
+
+  <!-- One shared player -->
+
+  <audio id="player" controls preload="none"></audio>
+
+  <div id="nowPlaying" class="now"></div>
+
+
+
+  <div class="list">
+
+    {%- comment -%} List all audio files in /poems {%- endcomment -%}
+
+    {%- for f in site.static_files -%}
+
+      {%- if f.path contains '/poems/' -%}
+
+        {%- if f.extname == '.mp3' or f.extname == '.m4a' or f.extname == '.ogg' or f.extname == '.wav' -%}
+
           {%- assign pretty = f.name | split: '.' | first | replace: '-', ' ' | replace: '_', ' ' -%}
-          <button class="track" data-src="{{ f.path | relative_url }}" data-title="{{ pretty | escape }}">
-            ▶︎ Play “{{ pretty }}”
-          </button>
-        {%- endfor -%}
-      {%- endif -%}
-    </div>
-  </main>
 
-  <footer>
-    <p class="tips">Tip: keep filenames simple like <code>morning-walk.mp3</code>. MP3 is most compatible.</p>
-  </footer>
+          <button class="track"
+
+                  data-src="{{ f.path | relative_url }}"
+
+                  data-title="{{ pretty | escape }}">
+
+            ▶︎ Play “{{ pretty }}”
+
+          </button>
+
+        {%- endif -%}
+
+      {%- endif -%}
+
+    {%- endfor -%}
+
+  </div>
+
+
 
   <script src="{{ 'main.js' | relative_url }}"></script>
+
 </body>
+
 </html>
+
+
+Alexandra Victor Edsall
+
+Philadelphia, PA
+
+215-439-4000
+
+lexaedsall@me.com
